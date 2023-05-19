@@ -1,6 +1,8 @@
 // Import libraries
 use std::io;
 
+/// This is a documentation comment, which is used for doc generation with cargo
+
 fn main() {
     // Create a mutable object through the mut directive
     let mut input = String::new();
