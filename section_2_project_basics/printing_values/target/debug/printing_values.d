@@ -1,0 +1,1 @@
+D:\Career\programming_Education\udemy_rust_2023\section_2_project_basics\printing_values\target\debug\printing_values.exe: D:\Career\programming_Education\udemy_rust_2023\section_2_project_basics\printing_values\src\main.rs

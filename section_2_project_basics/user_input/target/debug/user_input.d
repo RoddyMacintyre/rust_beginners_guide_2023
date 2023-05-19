@@ -1,0 +1,1 @@
+D:\Career\programming_Education\udemy_rust_2023\section_2_project_basics\user_input\target\debug\user_input.exe: D:\Career\programming_Education\udemy_rust_2023\section_2_project_basics\user_input\src\main.rs
