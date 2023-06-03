@@ -1,3 +1,6 @@
+use crate::Colors::Red;
+use crate::Person::Name;
+
 #[allow(unused_variables)]
 #[allow(unused_assignments)]
 
@@ -119,7 +122,34 @@ fn main() {
     println!("{}", emp.df_details());
     // Printing the static method
     println!("{}", Employee::static_fn_detail());
-    println!("\n")
+    println!("\n");
+
+    // =============== Enums ===============
+    // Enumeration of values
+    let my_color = Colors::Red;
+    println!("{:?}", my_color);
+    let my_color = Red;      // Auto generated from IDE
+    println!("{:?}", my_color);
+
+    // Add value to enum:
+    let person = Name(String::from("Alex"));
+    println!("{:?}", person);
+}
+
+// Try add element to an enum
+#[derive(Debug)]
+enum Person{
+    Name(String),
+    Surname(String),
+    Age(u32)
+}
+
+// Define an enum and make it debug printable
+#[derive(Debug)]
+enum Colors{
+    Red,
+    Green,
+    Blue
 }
 
 #[derive(Debug)]
