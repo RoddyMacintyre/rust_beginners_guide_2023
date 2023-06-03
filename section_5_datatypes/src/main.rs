@@ -65,4 +65,23 @@ fn main() {
     println!("\n");
 
     // =============== Slices ===============
+    // A pointer to a block of memory (pointer + offset/size)
+    let numbers = [1, 2, 3, 4, 5];
+    let slice = &numbers[1..4];
+    println!("{:?}", slice);
+    // Size is determined at runtime, used on arrays, vectors & strings
+
+    // Mutable slices allow us to change their values
+    let mut colors = ["red", "green", "blue", "pink"];
+    println!("{:?}", colors);
+    update_colors(&mut colors[2..4]);
+    println!("{:?}", colors);
+}
+
+// Function that takes a slice
+fn update_colors(colors_slice: &mut [&str]){
+    colors_slice[0] = "yellow";
+    colors_slice[1] = "orange";
+    // Done at runtime, so we won;t see this error at compile time:
+    // colors_slice[2] = "brown";
 }
