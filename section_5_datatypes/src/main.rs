@@ -76,7 +76,74 @@ fn main() {
     println!("{:?}", colors);
     update_colors(&mut colors[2..4]);
     println!("{:?}", colors);
+    println!("\n");
+
+    // =============== Tuples ===============
+    // Collections of various types! (Probably the basics of a structure in Rust?)
+    let person = ("John", 27, true);
+    let mut person: (&str, i64, bool) = ("John", 27, true);
+    println!("{:?}", person);
+
+    // Static: cannot be resized
+    // Elements can be updated (as long as the same type)
+    // Indexed (random access)
+    // LIMITED TO 12 ELEMENTS!
+    // Dot notation
+    println!("{:?}", person.0);
+
+    // Update tuple variables
+    person.0 = "Mike";
+    println!("{:?}", person.0);
+
+    // Destructure a tuple (unpacking)
+    let (name, age, employed) = person;
+    println!("Name:\t{name}\nAge:\t{age}\nEmployed:\t{employed}");
+    println!("\n");
+
+    // =============== Structures ===============
+    // Equivalent to dict/class (just like JS objects)
+    // Instantiate the struct:
+    let emp = Employee{
+        name: String::from("John"),
+        company: String::from("Google"),
+        age: 35
+    };
+
+    // To print a struct out debug will not work either.
+    // Have to annotate the struct definition with a derive declaration
+    println!("{:?}", emp);
+
+    // Access with dot notation
+    println!("{}", emp.name);
+    // Print out using the function added to the struct:
+    println!("{}", emp.df_details());
+    // Printing the static method
+    println!("{}", Employee::static_fn_detail());
+    println!("\n")
 }
+
+#[derive(Debug)]
+struct Employee{
+    name: String,
+    company: String,
+    age: u32
+}
+
+// Define a function for the Employee struct
+// (always declared outside of the struct declaration itself)
+impl Employee{
+    fn df_details(&self) -> String {
+        return format!("Name: {}, Age: {}, Company: {}", &self.name, &self.age, &self.company);
+    }
+
+    // Add static method. It is housed in the struct, but doesn't need a self parameter.
+    // Therefore it can be used by the struct, but also non-local code can access it is needed
+    // To achieve static, just don't let it expect SELF as a parameter, that's all...
+    fn static_fn_detail() -> String {
+        return String::from("Details of a person");
+    }
+}
+
 
 // Function that takes a slice
 fn update_colors(colors_slice: &mut [&str]){
