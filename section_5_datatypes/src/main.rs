@@ -1,4 +1,5 @@
 use crate::Colors::Red;
+use crate::ColorsGeneric::RedGen;
 use crate::Person::Name;
 
 #[allow(unused_variables)]
@@ -134,6 +135,46 @@ fn main() {
     // Add value to enum:
     let person = Name(String::from("Alex"));
     println!("{:?}", person);
+    println!("\n");
+
+    // =============== Generics ===============
+    // Allows variable data types in Structure and Enums
+    let p1: Point<i32> = Point {X: 6, Y: 8};
+    let p2: Point<f64> = Point {X: 3.25, Y: 8.63};
+    println!("{:?}", p1);
+    println!("{:?}", p2);
+
+    // Same but for an Enum
+    let c1 = RedGen("#f00");
+    let c2 = RedGen(255);
+    println!("{:?}", c1);
+    println!("{:?}", c2);
+
+    // Multi generic type point2
+    let p3: Point2<i32, f64> = Point2{x: 34, y: 8.5};
+    println!("{:?}", p3);
+}
+
+// Can have multiple generics!
+#[derive(Debug)]
+struct Point2<T, V>{
+    x: T,
+    y: V
+}
+
+// Construct e generic for a struct
+#[derive(Debug)]
+struct Point<T>{
+    X: T,
+    Y: T
+}
+
+// Construct a generic for an Enum
+#[derive(Debug)]
+enum ColorsGeneric<T>{
+    RedGen(T),
+    BlueGen(T),
+    GreenGen(T)
 }
 
 // Try add element to an enum
