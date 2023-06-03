@@ -30,5 +30,39 @@ fn main() {
     for number in numbers.iter(){
         println!("{}", number);
     }
+    println!("\n");
 
+    // =============== Vectors ===============
+    // Are arrays of variable size. Do not really exist as a type in Rust.
+    // Built through a construction (class/object/structure)
+    let primes: Vec<i32> = Vec::new();
+    let mut primes = vec![2, 3, 5];
+    println!("{:?}", primes);
+
+    // Adding elements
+    primes.push(7);
+    println!("{:?}", primes);
+    // Removing elements
+    primes.remove(2);
+    println!("{:?}", primes);
+
+    // Vectors with defaults
+    let mut numbers = vec![2;10];
+    println!("{:?}", numbers);
+
+    const DEFAULT_1: bool = true;
+    let values = vec![DEFAULT_1;8];
+    println!("{:?}", values);
+
+    // Update elements
+    numbers[5] = 8;
+    println!("{:?}", numbers);
+
+    // Using an iterator
+    for number in numbers.iter(){
+        println!("{:?}", number * number);
+    }
+    println!("\n");
+
+    // =============== Slices ===============
 }
