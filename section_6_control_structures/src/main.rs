@@ -41,6 +41,33 @@ fn main() {
     country(34);
     country(125);
     country(-15);
+    println!("");
+
+    // =============== MATCH ===============
+    for i in 0..=15{
+        println!("{}. I have {} oranges", i, get_oranges(i));
+    }
+    println!("");
+
+    // Tuple matching
+    let point = (10, 6);
+
+    match point{
+        (0, 0) => println!("origin"),
+        (x, 0) => println!("x axis ({}, 0)", x),
+        (0, y) => println!("y axis (0, {})", y),
+        (x, y) => println!("({}, {})", x, y)
+    }
+}
+
+fn get_oranges(amount: i32) -> &'static str {
+    return match amount{
+        0 => "no",
+        1 | 2 => "one or two",
+        3..=7 => "a few",
+        _ if (amount % 2 == 0) => "an even amount of",
+        _ => "lots of"
+    }
 }
 
 fn country(code: i32){
