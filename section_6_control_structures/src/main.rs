@@ -86,7 +86,34 @@ fn main() {
         let nb = pos + 1;
         println!("{0} * {0} = {1}", nb, square);
     }
+    println!();
 
+    // =============== WHILE LOOP ===============
+    get_squares(1_000_000_000_000);
+    // Super fast!
+    println!();
+
+    // Infinite while True-ish loop (break stops the loop)
+    get_cubes(1_000_000_000_000);
+}
+
+fn get_cubes(limit: i64){
+    let mut x = 1;
+    loop{
+        println!("{0} * {0} * {0} = {1}", x, x * x * x);
+        x += 1;
+        if x * x * x > limit{
+            break
+        }
+    }
+}
+
+fn get_squares(limit: i64){
+    let mut x = 1;
+    while x * x < limit{
+        println!("{0} * {0} = {1}", x, x * x);
+        x += 1;
+    }
 }
 
 fn get_oranges(amount: i32) -> &'static str {
