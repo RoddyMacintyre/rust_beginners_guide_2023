@@ -29,7 +29,7 @@ fn main() {
 
     let res = if num >= 5 {true} else {false};
     println!("{}", res);
-    println!("");
+    println!();
 
     // =============== MATCH ===============
     print_choice(Heart);
@@ -41,13 +41,13 @@ fn main() {
     country(34);
     country(125);
     country(-15);
-    println!("");
+    println!();
 
     // =============== MATCH ===============
     for i in 0..=15{
         println!("{}. I have {} oranges", i, get_oranges(i));
     }
-    println!("");
+    println!();
 
     // Tuple matching
     let point = (10, 6);
@@ -58,6 +58,35 @@ fn main() {
         (0, y) => println!("y axis (0, {})", y),
         (x, y) => println!("({}, {})", x, y)
     }
+    println!();
+
+    // =============== FOR LOOP ===============
+    for i in 1..=11{
+        println!("{0} * {0} = {1}", i, i * i);
+    }
+    println!();
+
+    let pets = ["cat", "dog", "chihuahua", "hamster", "bear", "COLA GLASS"];
+    for pet in pets.iter(){
+        if pet == &"chihuahua"{
+            println!("{} barks too much", pet);
+            continue
+        }
+        if pet == &"bear"{
+            println!("{} is not a pet", pet);
+            break
+        }
+        println!("I love my {}", pet);
+    }
+
+    println!();
+    // Trick like Python enumerate
+    for(pos, i) in (1..=11).enumerate(){
+        let square = i * i;
+        let nb = pos + 1;
+        println!("{0} * {0} = {1}", nb, square);
+    }
+
 }
 
 fn get_oranges(amount: i32) -> &'static str {
