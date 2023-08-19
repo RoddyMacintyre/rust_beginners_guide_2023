@@ -7,7 +7,7 @@
 
 static mut R: i32 = 0;
 
-/* Closures
+/* ========== CLOSURES ==========
     - A function within a function
     - Anonymous function (lambda expression)
 
@@ -23,6 +23,14 @@ Why closures?
         sum(2, 3);
 
 A Closure can be generic (not needing to declare types of the variables)
+ */
+
+/* ========== HIGHER ORDER FUNCTIONS ==========
+    - A function that takes another function as a parameter
+        fn apply(f: fn(i32) -> i32, a: i32){}
+        apply(|x| -> x + 1, a);
+
+Rust stl has a lot of higher order functions available.
  */
 
 fn main() {
@@ -62,4 +70,43 @@ fn main() {
     // ===== SWITCH BETWEEN STATEMENTS TO SEE IT IN ACTION! =====
     //gen(true);
     gen(3.5);
+    print!("\n");
+
+    // ***========== Higher order functions part ==========***
+    let square = |a: i32| a * a;
+    apply(square, 6);
+    print!("\n");
+
+    // No HOF vs HOF
+    // Calc the sum of all the squares < 500, only for even numbers.
+    let limit = 500;
+    let mut sum = 0;
+    for i in 0..{
+        let isq = i * i;
+        if isq > limit {
+            break;
+        }
+        else{
+            if is_even(i){
+                sum += isq;
+            }
+        }
+    }
+    println!("The sum is: {}", sum);
+
+    // With HOF (map, take_while, filter, fold)
+    let sum2 = (0..).map(|x| x * x)
+        .take_while(|&x| x <= limit)
+        .filter(|x| is_even(*x))
+        .fold(0, |sum, x| sum + x);
+    println!("The sum is: {}", sum2);
+
+}
+
+fn is_even(x: i32) -> bool {
+    x % 2 == 0
+}
+
+fn apply(f: fn(i32) -> i32, a: i32){
+    println!("Result:\t\t{}", f(a));
 }
