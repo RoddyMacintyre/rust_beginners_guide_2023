@@ -33,6 +33,34 @@ A Closure can be generic (not needing to declare types of the variables)
 Rust stl has a lot of higher order functions available.
  */
 
+macro_rules! my_macro{
+    () => (println!("First macro"))  // Just parentheses is "match anything and everything"
+}
+
+// macro_rules! name {
+//     ($name: expr) => (println!("Hey {}", $name))      // Match to an expression
+// }
+
+// Make macro name take as many arguments as it can
+macro_rules! name {
+    ($($name: expr), *) => ($(println!("Hey {}", $name);)*)
+}
+
+// Multiple match statements
+macro_rules! xy{
+    (x => $e: expr) => (println!("X is {}", $e));
+    (y => $e: expr) => (println!("Y is {}", $e));
+}
+
+// Macro that creates a function. Catch identifier in its own function and print it out
+macro_rules! build_fn{
+    ($fn_name: ident) => (
+        fn $fn_name(){
+            println!("{:?} was called", stringify!($fn_name));
+        }
+    )
+}
+
 fn main() {
     // Creating scopes...
     {
@@ -100,8 +128,38 @@ fn main() {
         .filter(|x| is_even(*x))
         .fold(0, |sum, x| sum + x);
     println!("The sum is: {}", sum2);
+    print!("\n");
 
+    // ***========== Macros part ==========***
+    /*
+    Way to write code in a shorthand manner.
+    Meta programming: Write code that writes code
+
+    - Match some expression and perform some operation
+    - Compiler fills out macro code at runtime (replaces the macro with actual code)
+
+    println!() is a macro (Know this by the ! appending the callee name)
+    formaat()! as well
+
+    Define your own with the "macro_rules!" keyword
+
+    example:
+    macro_rules! my_macro{
+        (match) => (code to run)
+    }
+    */
+    my_macro!();
+    name!("John");
+    name!("Alex", "Mary", "Had", "A", "Little", "Lamb");
+    xy!(x => 5);
+    xy!(y => 3 * 9);
+    // Build function and then call it immediately after. Meta-programming (sort of)
+    build_fn!("Hey");
+    hey();
 }
+
+// Define a macro
+
 
 fn is_even(x: i32) -> bool {
     x % 2 == 0
