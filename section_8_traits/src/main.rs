@@ -62,6 +62,32 @@ impl Developer for JavaDev{
     }
 }
 
+// GENERICS
+// Define a trait to exemplify Trait generics
+trait Bark{
+    fn bark(&self) -> String;
+}
+
+// Create some structs for the Generics
+struct Dog{
+    species: &'static str
+}
+
+struct Cat{
+    color: &'static str
+}
+
+impl Bark for Dog{
+    fn bark(&self) -> String {
+        return format!("{} barking", self.species)
+    }
+}
+
+// Now define a function bark
+fn bark_it<T: Bark>(b: T){
+    println!("{}", b.bark())
+}
+
 fn main() {
     // let r = RustDev{awesome: true};
     let r = RustDev::new(false);
@@ -69,4 +95,12 @@ fn main() {
 
     println!("{}", r.language());
     r.say_hello();
+    println!("");
+
+    let dog = Dog{species: "retriever"};
+    let cat = Cat{color: "black"};
+
+    bark_it(dog);
+    // Cannot say:
+    // bark_it(cat);
 }
