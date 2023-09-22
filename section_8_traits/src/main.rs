@@ -159,6 +159,33 @@ impl Add for Point{
     }
 }
 
+// STATIC DISPATCH
+// Means: generic trait will be converted to the required type at compile time
+trait Duplicateable{
+    fn dupl(&self) -> String;
+}
+
+impl Duplicateable for String{
+    fn dupl(&self) -> String {
+        format!("{0}{0}", *self)
+    }
+}
+
+impl Duplicateable for i32{
+    fn dupl(&self) -> String {
+        format!("{}", *self * 2)
+    }
+}
+
+// What if we want to have a function called duplicate
+// that can take a String or i32 and print out the result
+// It will figure out what function to create based on this at compile time
+
+// MONOMORPHIZATION
+fn duplicate<T: Duplicateable> (x: T){
+    println!("{}", x.dupl())
+}
+
 fn main() {
     // let r = RustDev{awesome: true};
     let r = RustDev::new(false);
@@ -188,4 +215,9 @@ fn main() {
     let p2 = Point{x: 3.7, y: 1.4};
     let p3 = p1 + p2;
     println!("{:?}", p3);   // :? = Debug formatter
+
+    let aa = 42;
+    let bb = "Hi John ".to_string();
+    duplicate(aa);
+    duplicate(bb);
 }
