@@ -88,6 +88,38 @@ fn bark_it<T: Bark>(b: T){
     println!("{}", b.bark())
 }
 
+// RETURNING TRAITS
+// struct Dog{}
+// struct Cat{}
+
+trait Animal{
+    fn make_noise(&self) -> &'static str;
+}
+
+impl Animal for Dog{
+    fn make_noise(&self) -> &'static str {
+        "Woof"
+    }
+}
+
+impl Animal for Cat{
+    fn make_noise(&self) -> &'static str {
+        "Meow"
+    }
+}
+// Implement trait:
+// Cannot return a trait because of Rust memory guarantees.
+// Needs to know what the size of the returned value will be at compile time.
+// Can use a box for this purpose
+fn get_animal(rand_number: f64) -> Box<dyn Animal>{
+    if rand_number < 1.0 {
+        Box::new(Dog{species: "retriever"})
+    }
+    else{
+        Box::new(Cat {color: "black"})
+    }
+}
+
 fn main() {
     // let r = RustDev{awesome: true};
     let r = RustDev::new(false);
@@ -103,4 +135,6 @@ fn main() {
     bark_it(dog);
     // Cannot say:
     // bark_it(cat);
+    println!("The animal says {}", get_animal(0.5).make_noise());
+    println!("The animal says {}", get_animal(2.0).make_noise());
 }
