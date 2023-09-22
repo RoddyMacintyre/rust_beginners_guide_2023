@@ -13,6 +13,8 @@ Topics:
 
  */
 
+//use test::stats::Stats;
+
 #[allow(unused_variables)]
 #[allow(unused_assignments)]
 
@@ -120,6 +122,22 @@ fn get_animal(rand_number: f64) -> Box<dyn Animal>{
     }
 }
 
+// ADDING TRAITS TO EXISTING STRUCTURES.
+// Create trait and add to struct that you didn't create
+trait Summable<T>{
+    fn sum(&self) -> T;
+}
+
+impl Summable<i32> for Vec<i32>{
+    fn sum(&self) -> i32 {
+        let mut sum: i32 = 0;
+        for i in self{
+            sum += *i;
+        }
+        sum
+    }
+}
+
 fn main() {
     // let r = RustDev{awesome: true};
     let r = RustDev::new(false);
@@ -137,4 +155,11 @@ fn main() {
     // bark_it(cat);
     println!("The animal says {}", get_animal(0.5).make_noise());
     println!("The animal says {}", get_animal(2.0).make_noise());
+
+    let a = vec![1, 2, 3, 4, 5];
+    // Vector now has trait Summable with .sum() callable
+    println!("sum = {}", a.sum());
+    let b = vec![1.0, 2.0, 3.0];
+    // Not available at this time. Need to implement first!
+    // println!("sum = {}", b.sum());
 }
