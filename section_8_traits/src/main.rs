@@ -186,6 +186,13 @@ fn duplicate<T: Duplicateable> (x: T){
     println!("{}", x.dupl())
 }
 
+// DYNAMIC DISPATCH
+// Generic trait that will be converted to the required type at runtime
+// It uses a trait reference to decide what to run, and this cannot be done at compile time
+fn duplicate_(x: &dyn Duplicateable){
+    println!("{}", x.dupl())
+}
+
 fn main() {
     // let r = RustDev{awesome: true};
     let r = RustDev::new(false);
@@ -220,4 +227,10 @@ fn main() {
     let bb = "Hi John ".to_string();
     duplicate(aa);
     duplicate(bb);
+
+    let aaa = 42;
+    let bbb = "Hi John ".to_string();
+
+    duplicate_(&aaa);
+    duplicate_(&bbb);
 }
