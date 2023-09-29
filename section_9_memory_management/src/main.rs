@@ -32,7 +32,18 @@ Rust will prevent parts of objects to outlive that object
 
 Lifetime elision:
     Compiler will build lifetimes for us when evident
+
+REFERENCE COUNTED VARIABLES
+Alt solution to bypass ownership/borrowing to let another object handle it explicitly
+RC Variable:
+    A structure that can hold multiple references to a variable
+    In order to share it in different places in the code
+
+    use std::rc::Rc;
+    Use .clone() to instantiate multiple references
  */
+
+use std::rc::Rc;
 
 #[allow(unused_variables)]
 #[allow(unused_assignments)]
@@ -60,6 +71,19 @@ impl Person{
         &self.name
     }
      */
+}
+
+// Reference counted variables
+struct Car{
+    brand: Rc<String>
+}
+
+// Implement some methods for our car
+impl Car {
+    fn new(brand: Rc<String>) -> Car{Car{brand: brand}}
+    fn drive(&self) {
+        println!("{} is driving...", &self.brand);
+    }
 }
 
 fn main() {
@@ -129,6 +153,18 @@ fn main() {
     // Invalid, because p2 doesn't live outside its scope!
     // println!("{}", a);
     println!("{}", aa);     // Works fine, because p1 is declared in the same scope, so is guaranteed the same lifetime
+
+    // Reference counted variables
+    let brand = Rc::new(String::from("BMW"));
+    // Create a scope and create a clone of this brand, see how may references we will get
+    println!("Pointers: {}", Rc::strong_count(&brand));
+    {
+        let car = Car::new(brand.clone());
+        car.drive();
+        println!("Pointers: {}", Rc::strong_count(&brand));
+    }
+    println!("My car is a {}", brand);
+    println!("Pointers: {}", Rc::strong_count(&brand));
 }
 
 fn get_str() -> &'static str{   // Static indicates a lifetime as long as the program.
