@@ -27,10 +27,40 @@ Ownership of a piece of data will be passed on, but for a temporary time (depend
 
 LIFETIMES
 Indication of how long an object will live
+Can define our own lifetimes
+Rust will prevent parts of objects to outlive that object
+
+Lifetime elision:
+    Compiler will build lifetimes for us when evident
  */
 
 #[allow(unused_variables)]
 #[allow(unused_assignments)]
+
+#[derive(Debug)]
+struct Person{
+    name: String
+}
+
+#[derive(Debug)]
+struct Dog<'l>{     // Assign lifetime parameter to Dog, and pass it to Person in Dog as well
+    name: String,
+    owner: &'l Person      // Expecting a lifetime parameter here, because it references another struct with a certain lifetime of its own
+}                          // If that doesn't match, you potentially get big issues by pointing to invalid data
+                           // Need to tell compiler that Dog will live as long as Person!
+
+// Lifetime elision:
+impl Person{
+    fn get_name(&self) -> &String{
+        &self.name
+    }
+    /* Compiler does the following implicitly:
+
+    fn get_name<'l>(&'l self) -> &'l String{
+        &self.name
+    }
+     */
+}
 
 fn main() {
     let i = 5;
@@ -79,6 +109,26 @@ fn main() {
         // Cannot borrow mutable v when it is also borrowed as immutable for the loop iterator
         // Remember that the iterator is an object that can borrow!
     }
+
+    // LIFETIME
+    println!("{}", get_str());
+
+    let p1 = Person{name: String::from("John")};
+    let d1 = Dog{name: String::from("Max"), owner: &p1};
+
+    println!("{:?}", d1);
+
+    // Lifetime elision
+    let mut a: &String;
+    let mut aa: &String;
+    {
+        let p2 = Person {name: String::from("Mary")};
+        a = p2.get_name();
+        aa = p1.get_name();
+    }
+    // Invalid, because p2 doesn't live outside its scope!
+    // println!("{}", a);
+    println!("{}", aa);     // Works fine, because p1 is declared in the same scope, so is guaranteed the same lifetime
 }
 
 fn get_str() -> &'static str{   // Static indicates a lifetime as long as the program.
