@@ -20,15 +20,43 @@ ERRORS
 
 HELPER METHODS
     Unwrap:
-        Returns the data if available, otherwise will panic
+        Returns the data if available, otherwise will panic an dgive an unrecoverable error
+    Expect:
+        Similar to unwrap but allows a custom error message
+
+? OPERATOR
+    Shorthand for an entire match statement
+    Basically means: get desired result ?otherwise? throw error message
 
  */
 
 use std::fs::{File, OpenOptions, remove_file};
-use std::io::{Read, Write};
+use std::io::{Read, Write, Error};
 
 #[allow(unused_variables)]
 #[allow(unused_assignments)]
+
+fn read_username_from_file() -> Result<String, Error>{
+    // The following code snippet
+    // let f = File::open("src/username.txt");
+    //
+    // let mut f = match f{
+    //     Ok(file) => file,
+    //     Err(e) => return Err(e),
+    // };
+    //
+    // let mut s = String::new();
+    // match f.read_to_string(&mut s){
+    //     Ok(_) => Ok(s),
+    //     Err(e) => Err(e),
+    // }
+
+    // Can simplify to:
+    let mut f = File::open("src/username.txt")?;
+    let mut s = String::new();
+    f.read_to_string(&mut s)?;
+    Ok(s)
+}
 
 fn main() {
     // ===== WORKING WITH FILES =====
@@ -69,16 +97,16 @@ fn main() {
 
     // Recoverable errors (enum Result<>...)
     let f = File::open("main.jpeg");    // Return type is a Result<File> (FP!)
-    match f{
-        Ok(f) => {
-            println!("File found! {:?}", f);
-        }
-        Err(e) => {
-            println!("File not found...\n {:?}", e)
-        }
-    }
-
-    println!("Continuing on with the execution");
+    // match f{
+    //     Ok(f) => {
+    //         println!("File found! {:?}", f);
+    //     }
+    //     Err(e) => {
+    //         println!("File not found...\n {:?}", e)
+    //     }
+    // }
+    //
+    // println!("Continuing on with the execution");
 
     // Option enum
     // There will be multiple error options:
@@ -86,8 +114,25 @@ fn main() {
     divide(Some(1));
     divide(Some(10));
     divide(None);
-    divide(Some(0));
+    // divide(Some(0));
 
+    // Helper method unwrap()
+    // match f{
+    //     Ok(f) => {
+    //         println!("File found! {:?}", f);
+    //     }
+    //     Err(e) => {
+    //         panic!()
+    //     }
+    // }
+    // Is equivalent to:
+    // let f = File::open("main.jpeg").unwrap();
+    // Helper method expect()
+    // let f = File::open("main.jpeg").expect("Unable to open file...");
+
+    // ? OPERATOR
+    let a = read_username_from_file();
+    println!("{:?}", a);
 }
 
 const ANSWER_TO_LIFE: i32 = 42;
