@@ -17,10 +17,15 @@ CHANNELS
             So, data comes from multiple sources with a single receiver
 
 MUTEX
-    Mutual exclusion lock
+    Mutual exclusion lock.
+    Only 1 thread can access a specific piece of data at a time, based on lock and release mechanisms
+
+    ARC - atomically referenced counted type:
+            Convert data into primitive types, which are safe to share across threads
+
  */
 
-use std::sync::mpsc;
+use std::sync::{Arc, mpsc, Mutex};
 use std::thread;
 use std::thread::sleep;
 use std::time::Duration;
@@ -28,7 +33,7 @@ use std::time::Duration;
 #[allow(unused_variables)]
 #[allow(unused_assignments)]
 
-const NUM_THREADS: usize = 20;  // Usize because we need data that is local to the machine for the threads
+const NUM_THREADS: usize = 5;  // Usize because we need data that is local to the machine for the threads
 
 fn start_thread(d: usize, tx: mpsc::Sender<usize>) {
     thread::spawn(move || {
@@ -79,5 +84,24 @@ fn main() {
     for j in receiver.iter().take(NUM_THREADS) {
         println!("Received {}", j);
     }
+
+    // MUTEX
+    let c = Arc::new(Mutex::new(0));
+    let mut threads = vec![];
+
+    for i in 0..10 {
+        let c = Arc::clone(&c);
+        let t = thread::spawn(move || {
+            let mut num = c.lock().unwrap();
+            *num += 1;
+        });
+        threads.push(t);
+    }
+
+    for thread_handler in threads {
+        thread_handler.join().unwrap();
+    }
+
+    println!("Result {}", *c.lock().unwrap());
 
 }
