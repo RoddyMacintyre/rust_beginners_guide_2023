@@ -49,7 +49,7 @@ fn main() {
                         // Send onwards
                         transmitter.send(msg).expect("Failed to send message to receiver...");
                     },
-                    Err(ref err) if err.kind() == ErrorKind.WouldBlock => (),
+                    Err(ref err) if err.kind() == ErrorKind::WouldBlock => (),
                     Err(_) => {
                         println!("Closing connection with {}", addr);
                         break;
