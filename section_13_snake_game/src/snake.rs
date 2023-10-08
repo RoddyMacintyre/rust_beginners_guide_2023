@@ -87,5 +87,32 @@ impl Snake {
         self.tail = Some(removed_block);
     }
 
-    // Validity check functions
+    // Validity check functions for the next move
+    pub fn head_direction(&self) -> Direction {
+        // Return direction to make it public
+        self.direction
+    }
+
+    pub fn next_head(&self, dir: Option<Direction>) -> (i32, i32) {
+        let (head_x, head_y): (i32, i32) = self.head_position();
+        let mut moving_dir = self.direction;
+
+        match dir {
+            Some(d) => moving_dir = d,
+            None => {}
+        }
+
+        match moving_dir {
+            Direction::Up => (head_x, head_y - 1),
+            Direction::Down => (head_x, head_y + 1),
+            Direction::Left => (head_x - 1, head_y),
+            Direction::Right => (head_x + 1, head_y),
+        }
+    }
+
+    // Eat an apple and grow the snake
+    pub fn restore_tail(&mut self) {
+        let blk = self.tail.clone().unwrap();
+        self.body.push_back(blk);
+    }
 }

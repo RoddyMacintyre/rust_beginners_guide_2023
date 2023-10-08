@@ -18,6 +18,7 @@ extern crate rand;
 // Add draw.rs and game.rs as modules in this file
 mod draw;
 mod game;
+mod snake;
 
 use piston_window::types::Color;
 use piston_window::*;
@@ -38,6 +39,11 @@ fn main() {
     let mut game = Game::new(width, height);
 
     while let Some(event) = window.next() {
+        // Add key press event to the game
+        if let Some(Button::Keyboard(key)) = event.press_args() {
+            game.key_pressed(key);
+        }
+
         window.draw_2d(&event, |c, g, _| {
             clear(BACK_COLOR, g);
             game.draw(&c, g);
