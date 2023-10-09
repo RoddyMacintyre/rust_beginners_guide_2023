@@ -1,0 +1,12 @@
+D:\Career\programming_Education\udemy_rust_2023\section_14_blockchain\target\debug\deps\sha2-734ac0f430f2d472.rmeta: C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\sha2-0.7.1\src\lib.rs C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\sha2-0.7.1\src\consts.rs C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\sha2-0.7.1\src\sha256_utils.rs C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\sha2-0.7.1\src\sha512_utils.rs C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\sha2-0.7.1\src\sha256.rs C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\sha2-0.7.1\src\sha512.rs
+
+D:\Career\programming_Education\udemy_rust_2023\section_14_blockchain\target\debug\deps\libsha2-734ac0f430f2d472.rlib: C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\sha2-0.7.1\src\lib.rs C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\sha2-0.7.1\src\consts.rs C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\sha2-0.7.1\src\sha256_utils.rs C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\sha2-0.7.1\src\sha512_utils.rs C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\sha2-0.7.1\src\sha256.rs C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\sha2-0.7.1\src\sha512.rs
+
+D:\Career\programming_Education\udemy_rust_2023\section_14_blockchain\target\debug\deps\sha2-734ac0f430f2d472.d: C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\sha2-0.7.1\src\lib.rs C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\sha2-0.7.1\src\consts.rs C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\sha2-0.7.1\src\sha256_utils.rs C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\sha2-0.7.1\src\sha512_utils.rs C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\sha2-0.7.1\src\sha256.rs C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\sha2-0.7.1\src\sha512.rs
+
+C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\sha2-0.7.1\src\lib.rs:
+C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\sha2-0.7.1\src\consts.rs:
+C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\sha2-0.7.1\src\sha256_utils.rs:
+C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\sha2-0.7.1\src\sha512_utils.rs:
+C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\sha2-0.7.1\src\sha256.rs:
+C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\sha2-0.7.1\src\sha512.rs:

@@ -1,0 +1,11 @@
+D:\Career\programming_Education\udemy_rust_2023\section_14_blockchain\target\debug\deps\libc-02552176f5d159c4.rmeta: C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\libc-0.2.149\src\lib.rs C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\libc-0.2.149\src\macros.rs C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\libc-0.2.149\src\fixed_width_ints.rs C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\libc-0.2.149\src\windows\mod.rs C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\libc-0.2.149\src\windows\msvc\mod.rs
+
+D:\Career\programming_Education\udemy_rust_2023\section_14_blockchain\target\debug\deps\liblibc-02552176f5d159c4.rlib: C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\libc-0.2.149\src\lib.rs C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\libc-0.2.149\src\macros.rs C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\libc-0.2.149\src\fixed_width_ints.rs C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\libc-0.2.149\src\windows\mod.rs C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\libc-0.2.149\src\windows\msvc\mod.rs
+
+D:\Career\programming_Education\udemy_rust_2023\section_14_blockchain\target\debug\deps\libc-02552176f5d159c4.d: C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\libc-0.2.149\src\lib.rs C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\libc-0.2.149\src\macros.rs C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\libc-0.2.149\src\fixed_width_ints.rs C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\libc-0.2.149\src\windows\mod.rs C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\libc-0.2.149\src\windows\msvc\mod.rs
+
+C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\libc-0.2.149\src\lib.rs:
+C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\libc-0.2.149\src\macros.rs:
+C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\libc-0.2.149\src\fixed_width_ints.rs:
+C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\libc-0.2.149\src\windows\mod.rs:
+C:\Users\might\.cargo\registry\src\github.com-1ecc6299db9ec823\libc-0.2.149\src\windows\msvc\mod.rs:
