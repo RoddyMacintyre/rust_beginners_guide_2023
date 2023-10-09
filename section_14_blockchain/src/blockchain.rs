@@ -33,7 +33,7 @@ pub struct Block {
 }
 
 pub struct Chain {
-    chain: Vec<Blocks>,
+    chain: Vec<Block>,
     current_transaction: Vec<Transaction>,
     difficulty: u32,
     miner_addr: String,
@@ -103,7 +103,7 @@ impl Chain {
             Some(block) => block,
             None => return String::from_utf8(vec![48; 64]).unwrap()
         };
-        Chain::hash(&block.header);
+        Chain::hash(&block.header)
     }
 
     // Update difficulty
@@ -121,8 +121,8 @@ impl Chain {
     fn get_merkle(curr_transaction: Vec<Transaction>) -> String {
         let mut merkle = Vec::new();
 
-        for t in current_transaction {
-            let hash = Chain::hash(t);
+        for t in curr_transaction {
+            let hash = Chain::hash(&t);
             merkle.push(hash);
         }
 
